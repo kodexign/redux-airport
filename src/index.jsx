@@ -11,11 +11,11 @@ import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 
 /** TODO: Add REDUCERS */
- const airline = (state, action) => {
+ const airlineList = (state =[], action) => {
     if (action.type === 'ADD_AIRLINE') {
-        console.log('airline added', airline);
         let newAirline = action.payload;
-        return ;
+        console.log('airline added', newAirline);
+        return [...state, newAirline];
     }
     return state;
  }
@@ -24,10 +24,10 @@ import { Provider } from 'react-redux';
 const storeInstance = createStore(
 
     combineReducers(
-        { airline
-
-        }
-    )
+        { 
+            airlineList 
+        }),
+        applyMiddleware(logger)
 );
 
 
